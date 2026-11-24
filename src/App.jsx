@@ -4,6 +4,12 @@ import {
   ChevronRight, Sparkles, Camera, MessageCircle, X, Music2, Check
 } from 'lucide-react';
 import coupleImage from './images/Couple.jpeg';
+import BrideImage from './images/Bride.jpeg';
+import coupleImage2 from './images/Couple2.jpeg';
+import TraditionalImage from './images/Traditional.jpeg';
+import GroomImage1 from './images/Groom1.jpeg';
+import FamilyImage from './images/Family.jpeg';
+
 
 const wedding = {
   groom: {
@@ -12,9 +18,9 @@ const wedding = {
     motherEn: 'Smt. Anusha Banoth', motherTe: 'శ్రీమతి అనుష బానోత్'
   },
   bride: {
-    en: 'Swetha Malavath', te: 'శ్వేత మాలవత్',
-    fatherEn: 'Sri Parmesh Malavath', fatherTe: 'శ్రీ పరమేష్ మాలవత్',
-    motherEn: 'Smt. Sakkubai Malavath', motherTe: 'శ్రీమతి సక్కుబాయి మాలవత్'
+    en: 'Swetha Maloth', te: 'శ్వేత మాలోత్',
+    fatherEn: 'Sri Parmesh Maloth', fatherTe: 'శ్రీ పరమేష్ మాలోత్',
+    motherEn: 'Smt. Pushapalatha Maloth', motherTe: 'శ్రీమతి పూశాపాలతా మాలోత్'
   },
   date: '2026-12-03T09:03:00+05:30',
   events: [
@@ -25,8 +31,8 @@ const wedding = {
    "dateTe":"డిసెంబర్ 02, 2026",
    "time":"02:30 PM Onwards",
    "timeTe":"సాయంత్రం 02:30 గంటల నుండి",
-   "venue":"Groom's Residence, Kamareddy",
-   "venueTe":"వరుడి నివాస గృహం, కామారెడ్డి",
+   "venue":"Groom's Residence, Substation Backside, Nizamabad Road, Kamareddy",
+   "venueTe":"వరుడి నివాస గృహం, సబ్‌స్టేషన్ వెనుక - కామారెడ్డి ",
    "desc":"Traditional auspicious ceremony where the groom is prepared with turmeric (Haldi) and divine blessings."
 },
 {
@@ -50,7 +56,7 @@ const wedding = {
    "venue":"Brides Residence, Sudarshan Nagar Thanda, Bheemgal, Nzb",
    "venueTe":"వధువు నివాస గృహం, సుదర్శన్ నగర్ తండా, భీంగల్, NZB",
    "desc":"The auspicious sacred moment of Jeelakarra Bellam & Talambralu, uniting two souls for eternity.",
-   "map":"https://maps.app.goo.gl/E7EKQYKnm5E7MJDT7"
+   "map":"https://goo.gl/maps/VUc27wXExfKSkY3Z6"
 },
 {
    "title":"Grand Royal Reception",
@@ -59,19 +65,19 @@ const wedding = {
    "dateTe":"డిసెంబర్ 04, 2026",
    "time":"09:00 AM Onwards",
    "timeTe":"ఉదయం 09:00 గంటల నుండి",
-   "venue":"Groom's Residence, Kamareddy",
-   "venueTe":"వరుడి నివాస గృహం, కామారెడ్డి",
+   "venue":"Groom's Residence, Substation Backside, Nizamabad Road,Kamareddy",
+   "venueTe":"వరుడి నివాస గృహం, సబ్‌స్టేషన్ వెనుక - కామారెడ్డి",
    "desc":"An evening of royal banquets, music, felicitations, and high celebration with family & friends.",
-   "map":"https://maps.app.goo.gl/rJNXxRm1gx9A9CEH7"
+   "map":"https://maps.app.goo.gl/wiyGtRW7j2RGNykv9"
 }  
   ],
   gallery: [
     ['Royal Union',coupleImage,'couple'],
-    ['Ring Ceremony','https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80','engagement'],
-    ['Groom','https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=80','groom'],
-    ['Bride','https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80','bride'],
-    ['Traditional Elegance','https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80','couple'],
-    ['Family Blessings','https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80','family']
+    ['Ring Ceremony',coupleImage2,'engagement'],
+    ['Family',FamilyImage,'family'],
+    ['Bride',BrideImage,'bride'],
+    ['Traditional Elegance',TraditionalImage,'groom'],
+    ['Family Blessings',coupleImage,'family']
   ]
 };
 
@@ -171,7 +177,7 @@ function App() {
         </div>
         <p className="eyebrow">{te ? 'రాచరిక తెలుగు వివాహ ఆహ్వానం' : 'ROYAL TELUGU WEDDING INVITATION'}</p>
         <h1>{te ? 'రాజశేఖర్ & శ్వేత' : 'Rajashekar & Swetha'}</h1>
-        <p className="opening-date">03 DECEMBER 2026 · HYDERABAD</p>
+        <p className="opening-date">03 DECEMBER 2026 · Kamareddy</p>
         <button className="primary-button" onClick={() => { setOpened(true); }}>{te ? 'వివాహ ఆహ్వానాన్ని తెరవండి' : 'Open Our Wedding Invitation'} <ChevronRight size={19}/></button>
         <button className="skip-button" onClick={() => setOpened(true)}>{te ? 'స్కిప్ చేయండి' : 'Skip animation'}</button>
       </section>}
