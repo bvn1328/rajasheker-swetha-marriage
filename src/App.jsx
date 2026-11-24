@@ -231,6 +231,38 @@ function App() {
           <div className="gallery-grid">{gallery.map(([title,url]) => <button className="gallery-image" key={title} onClick={() => setPreview({title,url})}><img src={url} alt={title}/><span><Camera size={16}/>{title}</span></button>)}</div>
         </section>
 
+        {/* Google Drive wedding photo sharing section */}
+        <section className="drive-section section" id="share-photos">
+          <div className="drive-content">
+            <div className="drive-icon"><Camera size={34} /></div>
+            <span className="eyebrow">
+              {te ? 'మధుర జ్ఞాపకాలను పంచుకోండి' : 'SHARE YOUR MEMORIES'}
+            </span>
+            <h2>
+              {te ? 'వివాహ ఫోటో ఆల్బమ్' : 'Wedding Photo Album'}
+            </h2>
+            <p>
+              {te
+                ? 'మా వేడుకల అందమైన క్షణాలను చూడండి. మీ వద్ద ఉన్న ఫోటోలను కూడా మా Google Drive ఫోల్డర్‌లో పంచుకోండి.'
+                : 'View the beautiful moments from our celebrations. You can also share your favourite wedding photos through our Google Drive folder.'}
+            </p>
+            <a
+              className="drive-button"
+              href={googleDriveFolderLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Camera size={18} />
+              {te ? 'గూగుల్ డ్రైవ్ ఫోల్డర్ తెరవండి' : 'OPEN GOOGLE DRIVE FOLDER'}
+            </a>
+            <p className="drive-note">
+              {te
+                ? 'రాజశేఖర్ & శ్వేతలతో మీ మధుర జ్ఞాపకాలను పంచుకోండి ❤️'
+                : 'Share your beautiful memories with Rajashekar & Swetha ❤️'}
+            </p>
+          </div>
+        </section>
+
         <section className="rsvp-section section">
           <div className="rsvp-card"><div className="round-icon"><MessageCircle/></div><h2>{te ? 'మీ రాకను నిర్ధారించండి' : 'CONFIRM YOUR PRESENCE'}</h2><span className="eyebrow">{te ? 'వాట్సాప్ ద్వారా సమాచారం పంపండి' : 'RSVP VIA WHATSAPP'}</span>
             {sent ? <div className="success"><Check/><h3>{te ? 'ధన్యవాదాలు!' : 'Thank You!'}</h3><p>{te ? 'మీ RSVP వాట్సాప్‌లో తెరవబడింది.' : 'Your RSVP message has been opened in WhatsApp.'}</p></div> :
