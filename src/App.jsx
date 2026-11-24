@@ -83,6 +83,8 @@ const wedding = {
 
 const filters = ['all','couple','engagement','groom','bride','family'];
 const phoneNumber = '+919440717334';
+const googleDriveFolderLink =
+  'https://drive.google.com/drive/folders/1CmY-eFk-6XEo3zPB6FggcdgriXfG51GF?usp=sharing';
 
 function App() {
   const [opened, setOpened] = useState(false);
@@ -94,6 +96,8 @@ function App() {
   const [sent, setSent] = useState(false);
   const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, passed: false });
   const te = lang === 'te';
+  const weddingCeremony = wedding.events[2];
+  const reception = wedding.events[3];
 
   useEffect(() => {
     const update = () => {
@@ -176,8 +180,8 @@ function App() {
           <div className="seal-inner"><strong>R&amp;S</strong><span>ROYAL SEAL</span></div>
         </div>
         <p className="eyebrow">{te ? 'రాచరిక తెలుగు వివాహ ఆహ్వానం' : 'ROYAL TELUGU WEDDING INVITATION'}</p>
-        <h1>{te ? 'రాజశేఖర్ & శ్వేత' : 'Rajashekar & Swetha'}</h1>
-        <p className="opening-date">03 DECEMBER 2026 · Kamareddy</p>
+        <h1>{te ? `${wedding.groom.te.split(' ')[0]} & ${wedding.bride.te.split(' ')[0]}` : `${wedding.groom.en.split(' ')[0]} & ${wedding.bride.en.split(' ')[0]}`}</h1>
+        <p className="opening-date">{weddingCeremony.date.toUpperCase()}</p>
         <button className="primary-button" onClick={() => { setOpened(true); }}>{te ? 'వివాహ ఆహ్వానాన్ని తెరవండి' : 'Open Our Wedding Invitation'} <ChevronRight size={19}/></button>
         <button className="skip-button" onClick={() => setOpened(true)}>{te ? 'స్కిప్ చేయండి' : 'Skip animation'}</button>
       </section>}
@@ -193,7 +197,7 @@ function App() {
             <div className="mini-seal">R &amp; S</div>
             <h2>{te ? wedding.groom.te : wedding.groom.en}<span>&amp;</span>{te ? wedding.bride.te : wedding.bride.en}</h2>
             <p className="hero-copy">{te ? 'మా నూతన జీవిత ప్రయాణానికి మీ దివ్యమైన ప్రేమానురాగాలు మరియు ఆశీస్సులు అందించవలసిందిగా సస్నేహంగా ఆహ్వానిస్తున్నాము.' : 'Request the pleasure of your company as we celebrate our holy wedding vows and begin our beautiful life journey together.'}</p>
-            <div className="date-pill"><CalendarDays size={19}/>{te ? 'గురువారం, 03 డిసెంబర్ 2026' : 'THURSDAY, 03 DECEMBER 2026'}</div>
+            <div className="date-pill"><CalendarDays size={19}/>{te ? weddingCeremony.dateTe : weddingCeremony.date}</div>
           </div>
         </section>
 
@@ -211,8 +215,8 @@ function App() {
         <section className="events-section section">
           <div className="section-heading"><span className="eyebrow">{te ? 'ముఖ్య వేడుకల స్థలాలు' : 'AUSPICIOUS CELEBRATIONS'}</span><h2>{te ? 'కళ్యాణం & విందు వేడుకలు' : 'Ceremony & Reception Venues'}</h2></div>
           <div className="venue-grid">
-            <article className="venue-card"><span className="venue-tag">{te ? 'సుముహూర్తం' : 'MUHURTHAM'}</span><h3>{te ? 'శ్రీమద్ వివాహ మహోత్సవం' : 'THE WEDDING CEREMONY'}</h3><p><CalendarDays/>Thursday, 03 December 2026</p><p><Clock3/>Sumuhurtham: 10:45 AM</p><p><MapPin/>Royal Palace Convention, Road No. 12, Banjara Hills, Hyderabad, Telangana</p><a className="outline-button" href="https://maps.app.goo.gl/E7EKQYKnm5E7MJDT7" target="_blank" rel="noreferrer"><MapPin size={17}/> VIEW WEDDING LOCATION</a></article>
-            <article className="venue-card"><span className="venue-tag">{te ? 'విందు వేడుక' : 'RECEPTION'}</span><h3>{te ? 'వివాహ సత్కారం & విందు' : 'WEDDING RECEPTION'}</h3><p><CalendarDays/>Friday, 04 December 2026</p><p><Clock3/>Evening: 07:00 PM Onwards</p><p><MapPin/>The Grand Imperial Ballroom, Banjara Hills, Hyderabad, Telangana</p><a className="outline-button" href="https://maps.app.goo.gl/rJNXxRm1gx9A9CEH7" target="_blank" rel="noreferrer"><MapPin size={17}/> VIEW RECEPTION LOCATION</a></article>
+            <article className="venue-card"><span className="venue-tag">{te ? 'సుముహూర్తం' : 'MUHURTHAM'}</span><h3>{te ? weddingCeremony.te : weddingCeremony.title}</h3><p><CalendarDays/>{te ? weddingCeremony.dateTe : weddingCeremony.date}</p><p><Clock3/>{te ? weddingCeremony.timeTe : weddingCeremony.time}</p><p><MapPin/>{te ? weddingCeremony.venueTe : weddingCeremony.venue}</p>{weddingCeremony.map && <a className="outline-button" href={weddingCeremony.map} target="_blank" rel="noreferrer"><MapPin size={17}/> {te ? 'వివాహ స్థలాన్ని చూడండి' : 'VIEW WEDDING LOCATION'}</a>}</article>
+            <article className="venue-card"><span className="venue-tag">{te ? 'విందు వేడుక' : 'RECEPTION'}</span><h3>{te ? reception.te : reception.title}</h3><p><CalendarDays/>{te ? reception.dateTe : reception.date}</p><p><Clock3/>{te ? reception.timeTe : reception.time}</p><p><MapPin/>{te ? reception.venueTe : reception.venue}</p>{reception.map && <a className="outline-button" href={reception.map} target="_blank" rel="noreferrer"><MapPin size={17}/> {te ? 'విందు స్థలాన్ని చూడండి' : 'VIEW RECEPTION LOCATION'}</a>}</article>
           </div>
         </section>
 
@@ -240,7 +244,7 @@ function App() {
           </div>
         </section>
 
-        <footer className="footer"><div className="mini-seal">R &amp; S</div><h2>FOREVER BEGINS HERE</h2><p className="eyebrow">WITH LOVE, RAJASHEKAR &amp; SWETHA</p><div className="gold-line"/><p className="telugu-quote">“మీ ఆశీస్సులతో మా కొత్త ప్రయాణం ప్రారంభమవుతుంది”</p><p>With your divine blessings &amp; presence, our new journey begins.</p></footer>
+        <footer className="footer"><div className="mini-seal">R &amp; S</div><h2>FOREVER BEGINS HERE</h2><p className="eyebrow">WITH LOVE, {wedding.groom.en.split(' ')[0].toUpperCase()} &amp; {wedding.bride.en.split(' ')[0].toUpperCase()}</p><div className="gold-line"/><p className="telugu-quote">“మీ ఆశీస్సులతో మా కొత్త ప్రయాణం ప్రారంభమవుతుంది”</p><p>With your divine blessings &amp; presence, our new journey begins.</p></footer>
       </main>
 
       {preview && <div className="lightbox" onClick={() => setPreview(null)}><button aria-label="Close image"><X/></button><img src={preview.url} alt={preview.title}/><p>{preview.title}</p></div>}
