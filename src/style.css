@@ -304,4 +304,101 @@
     font-size: 21px;
   }
 }
+
+
+/* Share invitation section */
+.share-joy-section {
+  background: linear-gradient(135deg, #fff8f0, #fce8e8);
+  text-align: center;
+}
+
+.share-joy-section .section-heading {
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.share-joy-section .section-heading p {
+  color: #66545a;
+  line-height: 1.8;
+}
+
+.share-joy-card {
+  max-width: 760px;
+  margin: auto;
+  padding: 35px 25px;
+  background: #fffdf9;
+  border: 1px solid #d5ad60;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(80, 30, 30, 0.08);
+}
+
+.share-joy-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #a47736;
+  background: #fff3df;
+}
+
+.share-joy-card h3 {
+  color: #791f36;
+  margin: 10px 0;
+}
+
+.share-joy-card p {
+  color: #66545a;
+}
+
+.share-joy-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 18px;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 17px;
+  border: 0;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font: 600 13px Inter, sans-serif;
+  cursor: pointer;
+}
+
+.whatsapp-share,
+.instagram-share,
+.copy-share {
+  background: #791f36;
+}
+
+.instagram-share {
+  background: #a47736;
+}
+
+.share-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #791f36;
+  font: 700 12px Inter, sans-serif;
+  text-decoration: none;
+}
+
+.drive-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
   

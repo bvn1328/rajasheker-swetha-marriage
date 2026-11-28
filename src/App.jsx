@@ -1,86 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Heart, CalendarDays, MapPin, Clock3, Globe2, Volume2, VolumeX,
-  ChevronRight, Sparkles, Camera, MessageCircle, X, Music2, Check, Phone
+  ChevronRight, Sparkles, Camera, MessageCircle, X, Check, Phone,
+  Share2, Copy, ExternalLink
 } from 'lucide-react';
-import BrideImage from './images/Bride.jpeg';
-import coupleImage2 from './images/Couple2.jpeg';
-import TraditionalImage from './images/Traditional.jpeg';
-import GroomImage1 from './images/Groom1.jpeg';
-import FamilyImage from './images/Family.jpeg';
+import { wedding } from './weddingData';
 
-
-const wedding = {
-  groom: {
-    en: 'Rajashekar Nayak Banoth', te: 'రాజశేఖర్ నాయక్ బానోత్',
-    fatherEn: 'Sri Lagjiram Banoth', fatherTe: 'శ్రీ లగ్జీరామ్ బానోత్',
-    motherEn: 'Smt. Anusha Banoth', motherTe: 'శ్రీమతి అనుష బానోత్'
-  },
-  bride: {
-    en: 'Swetha Maloth', te: 'శ్వేత మాలోత్',
-    fatherEn: 'Sri Parmesh Maloth', fatherTe: 'శ్రీ పరమేష్ మాలోత్',
-    motherEn: 'Smt. Pushapalatha Maloth', motherTe: 'శ్రీమతి పూశాపాలతా మాలోత్'
-  },
-  date: '2026-12-03T09:03:00+05:30',
-  events: [
-    {
-   "title":"Pellikoduku Ceremony",
-   "te":"పెళ్లికొడుకు చేయుట",
-   "date":"Dec 02, 2026",
-   "dateTe":"డిసెంబర్ 02, 2026",
-   "time":"02:30 PM Onwards",
-   "timeTe":"సాయంత్రం 02:30 గంటల నుండి",
-   "venue":"Groom's Residence, Substation Backside, Nizamabad Road, Kamareddy",
-   "venueTe":"వరుడి నివాస గృహం, సబ్‌స్టేషన్ వెనుక - కామారెడ్డి ",
-   "desc":"Traditional auspicious ceremony where the groom is prepared with turmeric (Haldi) and divine blessings."
-},
-{
-   "title":"Pellikuthuru Ceremony",
-   "te":"పెళ్లికూతురు చేయుట",
-   "date":"Dec 02, 2026",
-   "dateTe":"డిసెంబర్ 02, 2026",
-   "time":"09:30 PM Onwards",
-   "timeTe":"సాయంత్రం 9:30 గంటల నుండి",
-   "venue":"Bride's Residence, Sudarshan Nagar Thanda, Bheemgal, Nzb",
-   "venueTe":"వధువు నివాస గృహం, సుదర్శన్ నగర్ తండా, భీంగల్, NZB",
-   "desc":"Sacred turmeric and floral ceremony honoring the bride as she prepares for her wedding vows."
-},
-{
-   "title":"Sumuhurtham & Holy Wedlock",
-   "te":"సుముహూర్తం & కళ్యాణ మహోత్సవం",
-   "date":"Dec 03, 2026",
-   "dateTe":"డిసెంబర్ 03, 2026",
-   "time":"Sumuhurtham: 09:03 AM",
-   "timeTe":"సుముహూర్తం: ఉదయం 09:03 నిమిషాలకు",
-   "venue":"Brides Residence, Sudarshan Nagar Thanda, Bheemgal, Nzb",
-   "venueTe":"వధువు నివాస గృహం, సుదర్శన్ నగర్ తండా, భీంగల్, NZB",
-   "desc":"The auspicious sacred moment of Jeelakarra Bellam & Talambralu, uniting two souls for eternity.",
-   "map":"https://goo.gl/maps/VUc27wXExfKSkY3Z6"
-},
-{
-   "title":"Grand Royal Reception",
-   "te":"శ్రీమద్ వివాహ విందు & స్నేహసమ్మేళనం",
-   "date":"Dec 04, 2026",
-   "dateTe":"డిసెంబర్ 04, 2026",
-   "time":"09:00 AM Onwards",
-   "timeTe":"ఉదయం 09:00 గంటల నుండి",
-   "venue":"Groom's Residence, Substation Backside, Nizamabad Road,Kamareddy",
-   "venueTe":"వరుడి నివాస గృహం, సబ్‌స్టేషన్ వెనుక - కామారెడ్డి",
-   "desc":"An evening of royal banquets, music, felicitations, and high celebration with family & friends.",
-   "map":"https://maps.app.goo.gl/wiyGtRW7j2RGNykv9"
-}  
-  ],
-  gallery: [
-    ['Royal Union',coupleImage2,'couple'],
-    ['Ring Ceremony',coupleImage2,'engagement'],
-    ['Family',FamilyImage,'family'],
-    ['Bride',BrideImage,'bride'],
-    ['Traditional Elegance',TraditionalImage,'groom'],
-    ['Family Blessings',GroomImage1,'groom']
-  ]
-};
-
-const filters = ['all','couple','engagement','groom','bride','family'];
+const filters = ['all', 'wcc', 'wce', 'wct', 'traditional'];
 const phoneNumber = '+918121603272';
 const phoneNumber1= '+918247534365';
 const googleDriveFolderLink =
@@ -89,7 +15,7 @@ const googleDriveFolderLink =
 function App() {
   const [opened, setOpened] = useState(false);
   const [lang, setLang] = useState('en');
-  const [audio, setAudio] = useState(true);
+  const [audio, setAudio] = useState(false);
   const [galleryFilter, setGalleryFilter] = useState('all');
   const [preview, setPreview] = useState(null);
   const [rsvp, setRsvp] = useState({ name: '', attendance: 'yes', guests: '2', message: '' });
@@ -176,7 +102,7 @@ function App() {
 
       {!opened && <section className="opening">
         <div className="corner corner-a" /><div className="corner corner-b" /><div className="corner corner-c" /><div className="corner corner-d" />
-        <div className="seal" onClick={() => setOpened(true)} role="button" tabIndex={0} onKeyDown={e => e.key === 'Enter' && setOpened(true)}>
+        <div className="seal" onClick={() => setOpened(true)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && setOpened(true)}>
           <div className="seal-inner"><strong>R&amp;S</strong><span>ROYAL SEAL</span></div>
         </div>
         <p className="eyebrow">{te ? 'రాచరిక తెలుగు వివాహ ఆహ్వానం' : 'ROYAL TELUGU WEDDING INVITATION'}</p>
@@ -226,10 +152,108 @@ function App() {
         </section>
 
         <section className="gallery-section section">
-          <div className="section-heading"><span className="eyebrow">{te ? 'మధుర జ్ఞాపకాలు' : 'MEMORIES & MOMENTS'}</span><h2>{te ? 'ఛాయాచిత్ర మాలిక' : 'Couple Photo Gallery'}</h2></div>
-          <div className="filter-row">{filters.map(filter => <button key={filter} onClick={() => setGalleryFilter(filter)} className={galleryFilter === filter ? 'filter active' : 'filter'}>{filter}</button>)}</div>
+          <div className="section-heading"><span className="eyebrow">{te ? 'మా ఆహ్వాన పత్రిక' : 'Our invitation card'}</span><h2>{te ? 'వివాహ ఆహ్వాన పత్రిక' : 'Wedding Card'}</h2></div>
+          <div className="filter-row">
+            {filters.map(filter => (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => setGalleryFilter(filter)}
+                className={galleryFilter === filter ? 'filter active' : 'filter'}
+              >
+                {filter === 'all' ? 'All' : filter === 'wcc' ? 'Cover' : filter === 'wce' ? 'English' : filter === 'wct' ? 'Telugu' : 'Traditional'}
+              </button>
+            ))}
+          </div>
           <div className="gallery-grid">{gallery.map(([title,url]) => <button className="gallery-image" key={title} onClick={() => setPreview({title,url})}><img src={url} alt={title}/><span><Camera size={16}/>{title}</span></button>)}</div>
         </section>
+        
+
+        {/* Spread the Word - Share the Joy Section */}
+<section className="share-joy-section section" id="share-joy">
+  <div className="section-heading">
+    <span className="eyebrow">
+      {te ? 'శుభవార్తను అందరితో పంచుకోండి' : 'SPREAD THE WORD'}
+    </span>
+
+    <h2>{te ? 'ఆనందాన్ని పంచుకోండి' : 'Share the Joy'}</h2>
+
+    <div className="gold-line" />
+
+    <p>
+      {te
+        ? 'ఈ వివాహ ఆహ్వానాన్ని మీ కుటుంబ సభ్యులు మరియు స్నేహితులతో పంచుకోండి. WhatsApp Status లేదా Instagram Story లో కూడా పెట్టండి.'
+        : 'Send this invitation to family and friends, or put it on your WhatsApp Status and Instagram Story.'}
+    </p>
+  </div>
+
+  <div className="share-joy-card">
+    <div className="share-joy-icon">
+      <Share2 size={30} />
+    </div>
+
+    <h3>Share Our Wedding Invitation</h3>
+
+    <p>
+      Help us spread the happiness and invite everyone to celebrate with us!
+    </p>
+
+    <div className="share-joy-actions">
+
+      {/* WhatsApp Status */}
+      <a
+        href={`https://wa.me/?text=${encodeURIComponent(
+          '💐 You are cordially invited to the wedding celebration of Rajashekar & Swetha! 💕\n\nView our wedding invitation:\n' + window.location.href
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="share-btn whatsapp-share"
+      >
+        <MessageCircle size={19} />
+        WhatsApp
+      </a>
+
+      {/* Instagram Story / Status Cards */}
+      <a
+        href="https://rajasheker-swetha-marriage0311.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="share-btn instagram-share"
+      >
+        <Camera size={19} />
+        Instagram Story
+        <ExternalLink size={15} />
+      </a>
+
+      {/* Copy Invitation Link */}
+      <button
+        type="button"
+        className="share-btn copy-share"
+        onClick={async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            alert('Invitation link copied successfully!');
+          } catch {
+            alert('Could not copy the link. Please copy it from the address bar.');
+          }
+        }}
+      >
+        <Copy size={18} />
+        Copy Link
+      </button>
+
+    </div>
+
+    <a
+      href="https://rajasheker-swetha-marriage0311.vercel.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="share-more-link"
+    >
+      More about Status / Story Cards <ChevronRight size={17} />
+    </a>
+  </div>
+</section>
 
         {/* Google Drive wedding photo sharing section */}
         <section className="drive-section section" id="share-photos">
@@ -348,7 +372,6 @@ function App() {
 
   </div>
 </section>
-
 
         <section className="rsvp-section section">
           <div className="rsvp-card"><div className="round-icon"><MessageCircle/></div><h2>{te ? 'మీ రాకను నిర్ధారించండి' : 'CONFIRM YOUR PRESENCE'}</h2><span className="eyebrow">{te ? 'వాట్సాప్ ద్వారా సమాచారం పంపండి' : 'RSVP VIA WHATSAPP'}</span>
