@@ -1,9 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Heart, CalendarDays, MapPin, Clock3, Globe2, Volume2, VolumeX,
-  ChevronRight, Sparkles, Camera, MessageCircle, X, Music2, Check
+  ChevronRight, Sparkles, Camera, MessageCircle, X, Music2, Check, Phone
 } from 'lucide-react';
-import coupleImage from './images/Couple.jpeg';
 import BrideImage from './images/Bride.jpeg';
 import coupleImage2 from './images/Couple2.jpeg';
 import TraditionalImage from './images/Traditional.jpeg';
@@ -13,7 +12,7 @@ import FamilyImage from './images/Family.jpeg';
 
 const wedding = {
   groom: {
-    en: 'Rajashekar Banoth', te: 'రాజశేఖర్ బానోత్',
+    en: 'Rajashekar Nayak Banoth', te: 'రాజశేఖర్ నాయక్ బానోత్',
     fatherEn: 'Sri Lagjiram Banoth', fatherTe: 'శ్రీ లగ్జీరామ్ బానోత్',
     motherEn: 'Smt. Anusha Banoth', motherTe: 'శ్రీమతి అనుష బానోత్'
   },
@@ -72,24 +71,25 @@ const wedding = {
 }  
   ],
   gallery: [
-    ['Royal Union',coupleImage,'couple'],
+    ['Royal Union',coupleImage2,'couple'],
     ['Ring Ceremony',coupleImage2,'engagement'],
     ['Family',FamilyImage,'family'],
     ['Bride',BrideImage,'bride'],
     ['Traditional Elegance',TraditionalImage,'groom'],
-    ['Family Blessings',coupleImage,'family']
+    ['Family Blessings',GroomImage1,'groom']
   ]
 };
 
 const filters = ['all','couple','engagement','groom','bride','family'];
-const phoneNumber = '+919440717334';
+const phoneNumber = '+918121603272';
+const phoneNumber1= '+918247534365';
 const googleDriveFolderLink =
   'https://drive.google.com/drive/folders/1CmY-eFk-6XEo3zPB6FggcdgriXfG51GF?usp=sharing';
 
 function App() {
   const [opened, setOpened] = useState(false);
   const [lang, setLang] = useState('en');
-  const [audio, setAudio] = useState(false);
+  const [audio, setAudio] = useState(true);
   const [galleryFilter, setGalleryFilter] = useState('all');
   const [preview, setPreview] = useState(null);
   const [rsvp, setRsvp] = useState({ name: '', attendance: 'yes', guests: '2', message: '' });
@@ -148,8 +148,8 @@ function App() {
 
   const submitRsvp = (e) => {
     e.preventDefault();
-    const message = `Namaste! RSVP for ${wedding.groom.en} & ${wedding.bride.en}'s Wedding:\\nGuest Name: ${rsvp.name}\\nAttending: ${rsvp.attendance === 'yes' ? 'Yes, Joyfully!' : 'Sorry, Cannot Attend'}\\nTotal Guests: ${rsvp.guests}\\nMessage: ${rsvp.message || 'Blessings to the couple!'}`;
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    const message = `Namaste! RSVP for ${wedding.groom.en} & ${wedding.bride.en}'s Wedding:\nGuest Name: ${rsvp.name}\nAttending: ${rsvp.attendance === 'yes' ? 'Yes, Joyfully!' : 'Sorry, Cannot Attend'}\nTotal Guests: ${rsvp.guests}\nMessage: ${rsvp.message || 'Blessings to the couple!'}`;
+    window.open(`https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
     setSent(true);
   };
 
@@ -262,6 +262,93 @@ function App() {
             </p>
           </div>
         </section>
+        
+
+{/* Wedding Contact Numbers Section */}
+<section className="contact-section section" id="contact-us">
+  <div className="section-heading">
+    <span className="eyebrow">
+      {te ? 'మరిన్ని వివరాల కోసం సంప్రదించండి' : 'WE ARE HAPPY TO HELP'}
+    </span>
+
+    <h2>
+      {te ? 'మమ్మల్ని సంప్రదించండి' : 'Contact Us'}
+    </h2>
+
+    <div className="gold-line" />
+
+    <p>
+      {te
+        ? 'వివాహ వేడుకలకు సంబంధించిన వివరాల కోసం క్రింది నంబర్లను సంప్రదించండి.'
+        : 'For wedding details, venue information or any assistance, please contact us.'}
+    </p>
+  </div>
+
+  <div className="contact-grid">
+
+    {/* Contact Number 1 */}
+    <div className="contact-card">
+      <div className="contact-icon">
+        <Phone size={28} />
+      </div>
+
+      <span className="eyebrow">CONTACT 01</span>
+
+      <h3>Wedding Enquiries</h3>
+
+      <a className="contact-number" href={`tel:${phoneNumber}`}>
+        +91 81216 03272
+      </a>
+
+      <div className="contact-actions">
+        <a href={`tel:${phoneNumber}`} className="contact-call">
+          <Phone size={17} /> Call Now
+        </a>
+
+        <a
+          href={`https://wa.me/${phoneNumber.replace('+', '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="contact-whatsapp"
+        >
+          <MessageCircle size={17} /> WhatsApp
+        </a>
+      </div>
+    </div>
+
+    {/* Contact Number 2 */}
+    <div className="contact-card">
+      <div className="contact-icon">
+        <Phone size={28} />
+      </div>
+
+      <span className="eyebrow">CONTACT 02</span>
+
+      <h3>Additional Enquiries</h3>
+
+      <a className="contact-number" href={`tel:${phoneNumber1}`}>
+        +91 82475 34365
+      </a>
+
+      <div className="contact-actions">
+        <a href={`tel:${phoneNumber1}`} className="contact-call">
+          <Phone size={17} /> Call Now
+        </a>
+
+        <a
+          href={`https://wa.me/${phoneNumber1.replace('+', '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="contact-whatsapp"
+        >
+          <MessageCircle size={17} /> WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
         <section className="rsvp-section section">
           <div className="rsvp-card"><div className="round-icon"><MessageCircle/></div><h2>{te ? 'మీ రాకను నిర్ధారించండి' : 'CONFIRM YOUR PRESENCE'}</h2><span className="eyebrow">{te ? 'వాట్సాప్ ద్వారా సమాచారం పంపండి' : 'RSVP VIA WHATSAPP'}</span>

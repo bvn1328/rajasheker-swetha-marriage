@@ -178,3 +178,130 @@
     gap: 8px;
   }
 }
+
+
+/* Wedding Contact Section */
+.contact-section {
+  padding: 70px 20px;
+  background: linear-gradient(135deg, #fff8f0, #fce8e8);
+  text-align: center;
+}
+
+.contact-section .section-heading {
+  max-width: 650px;
+  margin: 0 auto 35px;
+}
+
+.contact-section .section-heading h2 {
+  color: #791f36;
+  font-size: 32px;
+  margin: 15px 0;
+}
+
+.contact-section .section-heading p {
+  color: #66545a;
+  line-height: 1.8;
+}
+
+.contact-grid {
+  max-width: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.contact-card {
+  padding: 35px 20px;
+  background: #fffdf9;
+  border: 1px solid #d5ad60;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(80, 30, 30, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a47736;
+  background: #fff3df;
+  border-radius: 50%;
+}
+
+.contact-card h3 {
+  color: #791f36;
+  margin: 15px 0;
+  font-size: 20px;
+}
+
+.contact-number {
+  display: block;
+  color: #a47736;
+  font-size: 23px;
+  font-weight: 700;
+  text-decoration: none;
+  margin: 18px 0 25px;
+}
+
+.contact-number:hover {
+  color: #791f36;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.contact-call {
+  background: #791f36;
+}
+
+.contact-whatsapp {
+  background: #218b55;
+}
+
+.contact-actions a:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .contact-section .section-heading h2 {
+    font-size: 26px;
+  }
+
+  .contact-number {
+    font-size: 21px;
+  }
+}
+  
